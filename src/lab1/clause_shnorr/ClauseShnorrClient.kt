@@ -16,7 +16,7 @@ class ClauseShnorrClient(private val keysGenerator: KeysGenerator) {
 
             val s = (k + x * e).rem(q)
 
-            return server.auth(s)
+            return server.auth(s = s, g = g, y = y, p = p)
         }
 
     }

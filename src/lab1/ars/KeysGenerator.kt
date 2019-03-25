@@ -55,9 +55,8 @@ class KeysGenerator {
 
         }
 
-        throw Exception("Проверяй все е ще раз")
+        throw Exception("Проверяй все еще раз")
     }
-
 
 }
 

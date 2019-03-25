@@ -1,7 +1,7 @@
 package lab1.ars
 
-fun main() {
 
+fun main(vararg params: String) {
 
     val generator = KeysGenerator()
     val keys = generator.generateOneKey()
@@ -9,8 +9,7 @@ fun main() {
     val server = ARSServer(keys.first, keys.second, keys.third)
     val client = ARSClient()
 
-    client.authorize(server)
+    println("Client ${if (client.authorize(server)) "authorized" else "unauthorized"}")
 
     generator.generateKeys()
-
 }
