@@ -1,4 +1,4 @@
-package lab1.ars
+package lab2.ars
 
 
 fun main(vararg params: String) {
@@ -11,5 +11,5 @@ fun main(vararg params: String) {
 
     println("Client ${if (client.authorize(server)) "authorized" else "unauthorized"}")
 
-    generator.generateKeys()
+//    generator.generateKeys()
 }

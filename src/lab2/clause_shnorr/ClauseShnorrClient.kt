@@ -1,4 +1,4 @@
-package lab1.clause_shnorr
+package lab2.clause_shnorr
 
 import java.lang.Math.pow
 

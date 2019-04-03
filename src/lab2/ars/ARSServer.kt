@@ -1,4 +1,4 @@
-package lab1.ars
+package lab2.ars
 
 import java.lang.StrictMath.pow
 

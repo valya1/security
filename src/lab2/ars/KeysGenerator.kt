@@ -1,7 +1,7 @@
-package lab1.ars
+package lab2.ars
 
-import lab1.Utils.gcd
-import lab1.Utils.generatePrime
+import lab2.Utils.gcd
+import lab2.Utils.generatePrime
 
 class KeysGenerator {
 

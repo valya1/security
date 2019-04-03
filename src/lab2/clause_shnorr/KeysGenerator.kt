@@ -1,6 +1,6 @@
-package lab1.clause_shnorr
+package lab2.clause_shnorr
 
-import lab1.Utils.generatePrime
+import lab2.Utils.generatePrime
 import java.lang.Math.pow
 import java.util.*
 
@@ -8,7 +8,7 @@ class KeysGenerator {
 
     //генерация публичного ключа
     fun generateOneKey(
-        p: Int = generatePrime(23),
+        p: Int = generatePrime(20),
         q: Int = generateQ(p)
     ): KeyParams {
 
