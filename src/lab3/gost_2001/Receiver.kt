@@ -1,15 +1,15 @@
 package lab3.gost_2001
 
-class Server {
+class Receiver {
 
 
-    fun verifyClient(r: Int, s: Int, openKey: OpenKey): Boolean {
+    fun verifySender(r: Int, s: Int, openKey: OpenKey): Boolean {
 
         val hT = 19
 
         val q = openKey.q
 
-        val e = hT % q
+        val e = hT % q // заранее посчитано
         val e2 = 27 //e обратное
         val v = e2 % q
 
@@ -17,11 +17,10 @@ class Server {
         val z2 = ((q - r) * v) % q
 
         val xc = 16
-        val yc = 16
 
         val r2 = xc % q
 
-
+        return r == r2
     }
 
 }

@@ -1,5 +1,7 @@
 package lab2
 
+import kotlin.math.abs
+
 object Utils {
 
     fun generatePrime(start: Int): Int {
@@ -27,4 +29,7 @@ object Utils {
 
     }
 
+    fun lcm(num1: Int, num2: Int): Int {
+        return abs(num1 * num2) / gcd(num1, num2)
+    }
 }

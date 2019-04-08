@@ -1,4 +1,4 @@
-package lab3
+package lab3.rsa
 
 import java.lang.Math.pow
 
