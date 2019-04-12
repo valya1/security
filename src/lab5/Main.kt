@@ -237,15 +237,15 @@ fun asmutBlumDeviding() {
     }()
 
     val backDmultipliersList = findBackDMultiplierList(dMultipliersList)
-
-    val s11 = {
-
-        var sTemp = 0
-
-        for((d,k) in checkShares){
-            sTemp += //TODO доделать
-        }
-    }
+//
+//    val s11 = {
+//
+//        var sTemp = 0
+//
+//        for((d,k) in checkShares){
+//            sTemp += //TODO доделать
+//        }
+//    }
 
 }
 

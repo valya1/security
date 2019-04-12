@@ -36,7 +36,7 @@ fun main() {
             "3" -> EAN13()
             "4" -> ENN()
             "5" -> railworksCode()
-            "6" -> CRC() //TODO доделаь
+            "6" -> CRC()
             "7" -> ECC_encode()
         }
     }
