@@ -93,7 +93,6 @@ fun sharingShamir() {
     var m = 3
     val n = 5
     val secret = alphabet['с']!!
-//    val secret = 11 //TODO test
     val p = 37
 
 
