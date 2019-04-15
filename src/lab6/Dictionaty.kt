@@ -51,7 +51,7 @@ val dictionary by lazy {
 
 
 
-    text.filter { char -> char.isLetter() || char == ' ' }
+    text.filter { char -> (char.isLetter() && char in 'а'..'я') || char == ' ' }
         .toLowerCase()
         .split(" ")
         .filter { str -> str.length > 3 }

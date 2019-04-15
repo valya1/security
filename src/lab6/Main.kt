@@ -10,8 +10,9 @@ fun main(){
     println(cesaredMessage)
     println(cesar.decode(cesaredMessage))
 
-//    val vishenerMessage = vishener.encode("Для записи, зарегистрируйтесь на сайте")
-//    println(vishenerMessage)
+    val vishenerMessage = vishener.encode("Конденсированное молоко")
+    println(vishenerMessage)
+    println(vishener.decode(vishenerMessage))
 
 
 
