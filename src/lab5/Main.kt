@@ -12,6 +12,7 @@ fun main() {
             "1" -> average()
             "2" -> secretSharing()
             "3" -> sharingShamir()
+            "4" -> asmutBlumDeviding()
         }
     }
 
@@ -93,7 +94,7 @@ fun sharingShamir() {
     val n = 5
     val secret = alphabet['с']!!
 //    val secret = 11 //TODO test
-    val p = 37 //TODO test
+    val p = 37
 
 
     fun f(x: Int) = (10 * x * x + 23 * x + secret).rem(p) // a1 = 10, a2 = 23
@@ -169,17 +170,19 @@ fun asmutBlumDeviding() {
 
     val n = 5
     val m = 3
-    val secret = alphabet['с']!!
+    val secret = alphabet['с']!! //secret = 18
 
-    val p = Utils.generatePrime(secret)
+    println("S: $secret")
 
-    val dList = arrayListOf(17, 20, 23, 29, 37)
+    val p = Utils.generatePrime(secret + 1)
+
+    val dList = arrayListOf(20, 23, 29, 37, 41)
 
     fun findS1(dList: ArrayList<Int>, p: Int): Int {
 
         var multi = 1
         for (d in dList)
-            multi *= d
+            multi *= (d - secret)
 
         val criteria = multi / p
 
@@ -200,18 +203,18 @@ fun asmutBlumDeviding() {
     }
 
 
-    fun findBackDMultiplierList(dMultiplierList: ArrayList<Int>): ArrayList<Int> {
+    fun findBackDMultiplierList(dMultiplierList: ArrayList<Int>, dj: List<Int>): ArrayList<Int> {
 
         val result = arrayListOf<Int>()
 
         fun findD1(index: Int): Int {
             var d1 = 0
-            while ((d1 * dMultiplierList[index]) % dList[index] != 1) d1++
+            while ((d1 * dMultiplierList[index]) % dj[index] != 1)
+                d1++
             return d1
         }
 
-
-        (0 until dList.size).forEach { index ->
+        (0 until dj.size).forEach { index ->
             result.add(findD1(index))
         }
 
@@ -222,13 +225,22 @@ fun asmutBlumDeviding() {
     val shares = findShares(s1, dList)
 
 
-    val checkShares = shares.filter { (i, _) -> i < 3 }
+    val checkShares = {
+
+        val temp = hashMapOf<Int, Int>()
+        for (share in shares) {
+
+            if (temp.size < 3)
+                temp[share.key] = share.value
+        }
+        temp
+    }()
 
     var D = 1
     for ((d, _) in checkShares)
         D *= d
 
-    var dMultipliersList = {
+    val dMultipliersList = {
         val temp = arrayListOf<Int>()
         for ((d, _) in checkShares) {
             temp.add(D / d)
@@ -236,17 +248,22 @@ fun asmutBlumDeviding() {
         temp
     }()
 
-    val backDmultipliersList = findBackDMultiplierList(dMultipliersList)
-//
-//    val s11 = {
-//
-//        var sTemp = 0
-//
-//        for((d,k) in checkShares){
-//            sTemp += //TODO доделать
-//        }
-//    }
+    val backDmultipliersList = findBackDMultiplierList(dMultipliersList, checkShares.keys.toList())
 
+    val s11 = {
+        var sTemp = 0
+        val kList = checkShares.values.toList()
+
+        (0 until checkShares.size).forEach { index ->
+            sTemp += kList[index] * dMultipliersList[index] * backDmultipliersList[index]
+        }
+
+        sTemp % D
+    }()
+
+    val decodedSecret = s11 % p
+
+    println("Decoded S: $decodedSecret")
 }
 
 
