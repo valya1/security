@@ -36,12 +36,12 @@ fun average() {
 
     val y2 = x1.pow(dD).rem(nD.toBigDecimal()) //D расшифровал сообщение C
     val x2 =
-        (y2 + numbers[1].toBigDecimal()).pow(eY).rem(nY.toBigDecimal())//D добавил зарплату, зашифровал и отправил Y
+        (y2 + numbers[1].toBigDecimal()).pow(eY).rem(nY.toBigDecimal())//D добавил, зашифровал и отправил Y
 
 
     val y3 = x2.pow(dY).rem(nY.toBigDecimal())//Y расшифровал сообщение D
     val x3 =
-        (y3 + numbers[2].toBigDecimal()).pow(eC).rem(nC.toBigDecimal())//Y добавил зарплату, зашифровал и отправил C
+        (y3 + numbers[2].toBigDecimal()).pow(eC).rem(nC.toBigDecimal())//Y добавил, зашифровал и отправил C
 
 
     val r = (x3.pow(dC).rem(nC.toBigDecimal()) - secretX.toBigDecimal()) / 3.toBigDecimal()
@@ -113,7 +113,7 @@ fun sharingShamir() {
 
                 val (x0, _) = otherShare
                 denominator = if (denominator == 0) x - x0 else denominator * (x - x0)
-                xCoeff -= x0 //если забудешь, возьми листок и перемножь скобки - коэффиценты будут формироваться именно так
+                xCoeff -= x0 //коэффиценты будут формироваться именно так
                 freeCoeff *= x0
             }
 
